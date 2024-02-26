@@ -6,6 +6,7 @@ import UsernameInput from "../components/username";
 import axios from "axios";
 import PasswordInput from "../components/password";
 import { BaseProps } from "../model";
+import { Link } from "react-router-dom";
 
 export default function Login({ apiUrl }: BaseProps) {
   const [showPassword, setShowPassword] = useState(false);
@@ -77,6 +78,12 @@ export default function Login({ apiUrl }: BaseProps) {
         >
           Login
         </Button>
+        <Link to="/register" style={{ alignSelf: "center" }}>
+          Register
+        </Link>
+        <Link to="/admin" style={{ alignSelf: "center" }}>
+          Admin
+        </Link>
       </Box>
       {window.innerWidth <= 425 ? (
         <></>
