@@ -17,7 +17,6 @@ export default function Login({ apiUrl }: BaseProps) {
     axios
       .post(apiUrl, { user_id: username, password: password })
       .then((rep) => {
-        console.log(rep.data.match);
         if (rep.data.match) {
           alert("Login Successfuly");
         } else {

@@ -13,7 +13,7 @@ export default function Register({ apiUrl }: BaseProps) {
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
   const [passValidText, setPassValidText] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const config = {
     minLen: Number(searchParams.get("minLen")) ?? 0,
@@ -71,7 +71,7 @@ export default function Register({ apiUrl }: BaseProps) {
         user_id: username,
         password,
       })
-      .then((rep) => {
+      .then(() => {
         setUsername("");
         setPassword("");
         setConPassword("");

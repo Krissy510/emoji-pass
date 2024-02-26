@@ -5,7 +5,6 @@ import { UsernameProps } from "./model";
 export default function UsernameInput({
   username,
   setUsername,
-  isError,
 }: UsernameProps) {
   return (
     <Box sx={{ gap: 1, display: "flex", flexDirection: "column" }}>
@@ -18,7 +17,6 @@ export default function UsernameInput({
         fullWidth
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        error={isError}
       />
     </Box>
   );
