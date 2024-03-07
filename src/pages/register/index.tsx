@@ -14,6 +14,7 @@ export default function Register({ apiUrl }: BaseProps) {
   const [conPassword, setConPassword] = useState("");
   const [passValidText, setPassValidText] = useState("");
   const [searchParams] = useSearchParams();
+  const [apiProcess, setApiProcess] = useState(false);
 
   const config = {
     minLen: Number(searchParams.get("minLen")) ?? 0,
@@ -67,6 +68,7 @@ export default function Register({ apiUrl }: BaseProps) {
   }, [password]);
 
   const handleRegister = () => {
+    setApiProcess(true);
     axios
       .put(apiUrl, {
         user_id: username,
@@ -77,6 +79,7 @@ export default function Register({ apiUrl }: BaseProps) {
         setPassword("");
         setConPassword("");
         alert("Register Successfully");
+        setApiProcess(false);
       });
   };
 
@@ -131,7 +134,10 @@ export default function Register({ apiUrl }: BaseProps) {
           variant="contained"
           sx={{ marginTop: 1 }}
           disabled={
-            username === "" || passValidText !== "" || conPassword !== password
+            username === "" ||
+            passValidText !== "" ||
+            conPassword !== password ||
+            apiProcess
           }
           onClick={handleRegister}
         >

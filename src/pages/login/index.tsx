@@ -11,12 +11,15 @@ export default function Login({ apiUrl }: BaseProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [apiProcess, setApiProcess] = useState(false);
 
   const onLogin = () => {
+    setApiProcess(true);
     setPassword("");
     axios
       .post(apiUrl, { user_id: username, password: password })
       .then((rep) => {
+        setApiProcess(false);
         if (rep.data.match) {
           alert("Login Successfuly");
         } else {
@@ -73,7 +76,7 @@ export default function Login({ apiUrl }: BaseProps) {
           variant="contained"
           onClick={onLogin}
           sx={{ marginTop: 1 }}
-          disabled={username === "" || password === ""}
+          disabled={username === "" || password === "" || apiProcess}
         >
           Login
         </Button>
