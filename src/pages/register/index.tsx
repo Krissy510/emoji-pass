@@ -130,7 +130,9 @@ export default function Register({ apiUrl }: BaseProps) {
         <Button
           variant="contained"
           sx={{ marginTop: 1 }}
-          disabled={passValidText !== "" || username === ""}
+          disabled={
+            username === "" || passValidText !== "" || conPassword !== password
+          }
           onClick={handleRegister}
         >
           Register
